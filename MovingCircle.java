@@ -4,14 +4,22 @@ import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 /**
  * Created by saahil claypool on 12/13/2015.
  */
 public class MovingCircle extends Sprite {
-    public final double xMove = 1;
-    public final double yMove = 1;
-    public MovingCircle () {
+    ArrayList<Integer> x,y;
+    int time;
+
+    /**
+     *
+     * @param x min 2 elemetns
+     * @param y min 2 elements
+     * @param time
+     */
+    public MovingCircle (ArrayList<Integer>x, ArrayList<Integer> y, int time) {
         try {
            Texture t = new Texture();
             t.loadFromStream(this.getClass().getResourceAsStream("soccerball.png"));
@@ -23,12 +31,39 @@ public class MovingCircle extends Sprite {
             System.out.println("");
         }
         this.setScale(.1f,.1f);
+        this.x = x;
+        this.y = y;
+        this.time = time;
     }
 
-    public void move(){
-        this.setPosition((int)(this.getPosition().x + xMove), (int)(this.getPosition().y + yMove));
-    }
+    public void move(int t){
+        int dt =t- this.time ;
+        double xLoc = 0;
+        double yLoc = 0;
+        for (int i = 0; i < x.size(); i++) {
+            xLoc += x.get(i) * Math.pow(dt, i) /(i > 0 ? i:1)  ;
 
+        }
+        for (int i = 0; i < y.size(); i++) {
+            yLoc += y.get(i) * Math.pow(dt, i) /(i > 0 ? i:1)  ;
+
+        }
+        System.out.printf("xLoc %f, yLoc%f\n", xLoc, yLoc);
+        this.setPosition((int)xLoc, (int)yLoc);
+        reformat(t);
+    }
+    public void flipX(int t){
+        System.out.println(this.x.get(1));
+        this.x.set(1 , -1 * this.x.get(1));
+        System.out.println(this.x.get(1));
+        reformat(t);
+    }
+    private void reformat(int t){
+        for (int i = 0; i <x.size()-1 ; i++) {
+            x.set(i, x.get(i) +  x.get(i+1)*(t-time));
+        }
+        time = t;
+    }
 
 
 }
