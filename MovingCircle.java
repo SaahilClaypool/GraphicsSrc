@@ -13,14 +13,14 @@ public class MovingCircle extends Sprite {
     public final double yMove = 1;
     public MovingCircle () {
         try {
-            Texture t = new Texture();
+           Texture t = new Texture();
+            t.loadFromStream(this.getClass().getResourceAsStream("soccerball.png"));
 
-            t.loadFromFile( FileSystems.getDefault().getPath("C:\\Users\\saahil claypool\\Documents\\Coding\\GameGraphics\\src\\GraphicsSrc\\soccerball.png"));
 
             this.setTexture(t);
         }
         catch (IOException e) {
-            System.out.println("COULNDT LOAD FILE");
+            System.out.println("");
         }
         this.setScale(.1f,.1f);
     }
