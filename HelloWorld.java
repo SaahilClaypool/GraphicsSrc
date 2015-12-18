@@ -54,7 +54,7 @@ public class HelloWorld{
                     //The user pressed the close button
                     window.close();
                 }
-               else{
+                else{
                     if(event.type==Event.Type.KEY_PRESSED){
                         System.out.println(event.asKeyEvent().key);
                     }

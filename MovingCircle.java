@@ -30,10 +30,15 @@ public class MovingCircle extends Sprite {
         catch (IOException e) {
             System.out.println("");
         }
-        this.setScale(.1f,.1f);
+
         this.x = x;
         this.y = y;
         this.time = time;
+        double width = this.getLocalBounds().width;
+        double height = this.getLocalBounds().height;
+        this.setScale((float) (100 / width),(float)(100/ height));
+        System.out.println("M SCALE "+ this.getScale());
+        System.out.println("MY LOCAL BOUND "+ this.getLocalBounds());
     }
 
     public void move(int t){
