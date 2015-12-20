@@ -1,3 +1,4 @@
+import javafx.scene.shape.Circle;
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Vector2f;
@@ -14,10 +15,15 @@ import java.util.LinkedList;
 public class World {
     public RenderWindow window;
     public ArrayList<Obj> objects = new ArrayList<>();
+    CircleSystem circleSystem;
     public float t = 0;
     public int width = 1000;
     public int height = 1000;
 
+
+    public World(){
+        circleSystem = new  CircleSystem(this.width / 2, 100, this);
+    }
     /**
      * class represents collision of two objects
      */
@@ -47,13 +53,15 @@ public class World {
 //Limit the framerate
         window.setFramerateLimit(30);
 
-        this.add(new Bubble(100,100,100,100, "black"));
-        this.add(new Bubble(200,100,100,100, "blue"));
+        /*this.add(new Bubble(100,100,100,100, "black"));
+        this.add(new Bubble(200,100,100,100, "blue"));*/
+
         while(window.isOpen()){
             updateFrame();
             handleEvents(t);
             handleCollisions();
             moveStuff();
+            circleSystem.rotate(.01f);
 
             t+=.1f;
             window.display();
@@ -142,7 +150,7 @@ public class World {
     }
     public void moveToMouse(Vector2i pos, float time){
         System.out.println("ADDING");
-        Bubble b = new Bubble(this.width / 2, this.height -10, 20,20,"blue");
+        Bubble b = new Bubble(this.width / 2, this.height -10, 20,20,"blue", this);
         this.add(b);
         Vector2f myPos = b.getPosition();
         Vector2f difference = Vector2f.sub(new Vector2f(pos.x, pos.y), myPos);

@@ -1,13 +1,13 @@
+/*
 import junit.framework.TestCase;
+
 import org.jsfml.system.Vector2f;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-/**
- * Created by saahil claypool on 12/18/2015.
- */
+
 public class test extends TestCase {
 
     @Test
@@ -72,6 +72,5 @@ public class test extends TestCase {
         System.out.println("" + result.getFailureCount() + " of " + result.getRunCount() + " failed");
     }
 
-}
 
-
+*/
