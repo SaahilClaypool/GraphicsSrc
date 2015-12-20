@@ -22,7 +22,9 @@ public class World {
 
 
     public World(){
-        circleSystem = new  CircleSystem(this.width / 2, 100, this);
+
+       circleSystem = new  CircleSystem(this.width / 2, 100, this);
+        //circleSystem = new CircleSystem(0f,0f,this);
     }
     /**
      * class represents collision of two objects
@@ -61,13 +63,15 @@ public class World {
             handleEvents(t);
             handleCollisions();
             moveStuff();
-            circleSystem.rotate(.01f);
+            circleSystem.rotate();
 
             t+=.1f;
             window.display();
         }
     }
-
+    public void rotateWithBall(Vector2f pos){
+        circleSystem.rotateWithBall(pos);
+    }
     /**
      * adds obj
      * @param o: object to be added
@@ -126,7 +130,7 @@ public class World {
      * draw each shape
      */
     public void updateFrame(){
-        window.clear(Color.BLACK);
+       window.clear(Color.BLACK);
 
     }
 

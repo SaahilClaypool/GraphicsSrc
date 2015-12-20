@@ -9,7 +9,8 @@ public class Bubble extends Obj {
     World w;
     public Bubble(float x, float y, int height, int width, String color, World w){
         super(new Vector2f(x,y), new Vector2f(0,0), new Vector2f(0,0), width, height, color+"-circ.png");
-        this.setOrigin(width/2, height/2);
+        this.setOrigin(width, height);
+        System.out.println("My Dim  " + getGlobalBounds());
         this.w = w;
 
 
@@ -35,9 +36,12 @@ public class Bubble extends Obj {
     @Override
     public void handleCollision(Obj b) {
         this.stop();
-        if(free){
+        if(free ){
             w.circleSystem.add(this);
             free = false;
+            w.rotateWithBall(this.getPosition());
+            //w.circleSystem.giveInertia(.1);
+
         }
 
     }
