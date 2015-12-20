@@ -37,6 +37,7 @@ public class HelloWorld{
             {
                 c.move(time);
                 window.draw(c);
+                window.draw(new CircleShape(10));
             }
             time++;
             if(circ.getGlobalBounds().intersection(circ2.getGlobalBounds()) != null){
