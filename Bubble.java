@@ -45,4 +45,17 @@ public class Bubble extends Obj {
         }
 
     }
+
+    @Override
+    public boolean doesCollide(Obj b) {
+        double r = this.height/2;
+        double r2 = b.height/2;
+
+        float disX = Math.abs(this.getPosition().x  - b.getPosition().x);
+        float disY = Math.abs(this.getPosition().y - b.getPosition().y);
+        double dis =  Math.sqrt(disX * disX + disY * disY);
+        System.out.printf("pos 1 = %s   pos 2 = %s   R 1 = %f R 2 = %f\n", this.getPosition().toString(), b.getPosition().toString(),
+                r, r2);
+        return dis < (r+r2);
+    }
 }

@@ -13,6 +13,8 @@ public class Obj extends Sprite {
     Vector2f vel;
     Vector2f acc;
     float lastMove = 0;
+    int height ;
+    int width ;
 
     public Obj(Vector2f loc, Vector2f vel, Vector2f acc, int width, int height, String s) {
 
@@ -30,7 +32,8 @@ public class Obj extends Sprite {
         this.setTexture(t);
 
 
-
+        this.width = width;
+        this.height = height;
         float tW = getLocalBounds().width;
         float tH = getLocalBounds().height;
 
@@ -82,5 +85,6 @@ public class Obj extends Sprite {
         lastMove = now;
 
     }
+
 
 }

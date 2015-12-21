@@ -143,7 +143,8 @@ public class World {
                 System.out.println("CLICK");
             }
             else if (event.type.equals(Event.Type.MOUSE_BUTTON_RELEASED)){
-                moveToMouse(event.asMouseEvent().position, lastMove);
+                 moveToMouse(event.asMouseEvent().position, lastMove);
+                System.out.println("Mouse Position " + event.asMouseEvent().position);
             }
             else if(event.type == Event.Type.CLOSED) {
                 //The user pressed the close button

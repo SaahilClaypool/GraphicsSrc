@@ -29,10 +29,10 @@ public class CircleSystem {
     }
     public void rotateWithBall(Vector2f ball){
         System.out.println( (ball.x - posX) / 100.);
-        this.giveInertia( -1 * (ball.x - posX) / 100);
+        this.giveInertia( -1 * Math.sqrt(Math.abs(ball.x - posX)) * Math.signum(ball.x - posX) / 50);
     }
     public void rotate(){
-        if(inertia <= .0005 && inertia>=-.005){
+        if(inertia <= .005 && inertia>=-.005){
             return;
         }
         System.out.println(inertia + " INTERIA ");
